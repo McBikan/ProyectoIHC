@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo_claro"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:gravity="center_horizontal">
+
+        <!-- Botón de menú hamburguesa -->
+        <ImageView
+            android:id="@+id/ivMenu"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_menu"
+            android:layout_gravity="start" />
+
+        <!-- Título -->
+        <TextView
+            android:id="@+id/tvTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EVALUACIÓN PSICOLÓGICA"
+            android:textColor="@color/morado_fuerte"
+            android:gravity="center"
+            android:padding="12sp"
+            android:textSize="50sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/convergence"
+            android:layout_marginTop="16dp" />
+
+        <!-- Imagen de icono de la evaluación -->
+        <ImageView
+            android:id="@+id/ivIcono"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/icon_test"
+            android:layout_marginTop="16dp" />
+
+        <!-- Subtítulo motivacional -->
+        <TextView
+            android:id="@+id/tvSubtitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PORQUE QUEREMOS CONOCERTE MEJOR"
+            android:textColor="@android:color/black"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginTop="8dp" />
+
+        <!-- Información breve -->
+        <TextView
+            android:id="@+id/tvInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="100 PREGUNTAS\nDURACIÓN: 30MIN"
+            android:textColor="@android:color/black"
+            android:textSize="30sp"
+            android:gravity="center"
+            android:layout_marginTop="8dp" />
+
+        <!-- Botón Empezar -->
+        <Button
+            android:id="@+id/btnEmpezar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Empezar"
+            android:textAllCaps="false"
+            android:textSize="30sp"
+            android:background="@drawable/boton_con_borde"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="16dp"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="8dp" />
+
+        <!-- Botón flotante de micrófono -->
+        <ImageButton
+            android:id="@+id/btnMicrofono"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/ic_mic"
+            android:backgroundTint="@color/morado_fuerte"
+            android:background="@drawable/microfono_circular"
+            android:layout_marginTop="24dp"
+            android:tint="@android:color/white" />
+
+    </LinearLayout>
+
+</ScrollView>

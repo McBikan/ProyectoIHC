@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo_oscuro"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <!-- Menú hamburguesa -->
+        <ImageView
+            android:id="@+id/ivMenu"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/menu_burger"
+            android:tint="@color/fondo_claro"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp" />
+
+        <!-- Imagen de perfil (circular) -->
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ivProfileImage"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/default_user"
+            app:layout_constraintTop_toBottomOf="@id/ivMenu"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:civ_border_width="2dp"
+            app:civ_border_color="@android:color/white" />
+
+        <!-- Nombre visible (título principal) -->
+        <TextView
+            android:id="@+id/tvTituloNombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CÉSAR"
+            android:textColor="@android:color/white"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/ivProfileImage"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="12dp" />
+
+        <!-- BLOQUE NOMBRE -->
+        <LinearLayout
+            android:id="@+id/layoutNombre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/borde_rectangular_blanco"
+            android:padding="12dp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            app:layout_constraintTop_toBottomOf="@id/tvTituloNombre"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:id="@+id/tvLabelNombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NOMBRE:"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvNombreValor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CÉSAR"
+                android:textColor="@android:color/white"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
+
+        <!-- BLOQUE APELLIDO -->
+        <LinearLayout
+            android:id="@+id/layoutApellido"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/borde_rectangular_blanco"
+            android:padding="12dp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            app:layout_constraintTop_toBottomOf="@id/layoutNombre"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="12dp">
+
+            <TextView
+                android:id="@+id/tvLabelApellido"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="APELLIDO:"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvApellidoValor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="RODRIGUEZ SANCHEZ"
+                android:textColor="@android:color/white"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
+
+        <!-- BLOQUE EDAD -->
+        <LinearLayout
+            android:id="@+id/layoutEdad"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/borde_rectangular_blanco"
+            android:padding="12dp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            app:layout_constraintTop_toBottomOf="@id/layoutApellido"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="12dp">
+
+            <TextView
+                android:id="@+id/tvLabelEdad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="EDAD:"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvEdadValor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="57 AÑOS"
+                android:textColor="@android:color/white"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
+
+        <!-- BLOQUE ANTECEDENTES -->
+        <LinearLayout
+            android:id="@+id/layoutAntecedentes"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/borde_rectangular_blanco"
+            android:padding="12dp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            app:layout_constraintTop_toBottomOf="@id/layoutEdad"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="24dp">
+
+            <TextView
+                android:id="@+id/tvLabelAntecedentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ANTECEDENTES:"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvAntecedente1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="• ANSIEDAD"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="8dp" />
+
+            <TextView
+                android:id="@+id/tvAntecedente2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="• ESTRÉS LABORAL"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="4dp" />
+
+            <TextView
+                android:id="@+id/tvAntecedente3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="• PROBLEMAS FAMILIARES"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="4dp" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -1,0 +1,10 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme -->
+    <style name="Base.Theme.ProyectoIHC" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/morado_fuerte</item> <!-- o cualquier otro -->
+        <item name="colorPrimaryDark">@color/morado_fuerte</item>
+        <item name="colorAccent">@color/morado_fuerte</item>
+    </style>
+
+    <style name="Theme.ProyectoIHC" parent="Base.Theme.ProyectoIHC" />
+</resources>
