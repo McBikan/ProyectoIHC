@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo_claro"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="16dp">
+
+        <!-- Botón de menú hamburguesa -->
+        <ImageView
+            android:id="@+id/ivMenu"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_menu"
+            android:layout_gravity="start" />
+
+        <!-- Título principal -->
+        <TextView
+            android:id="@+id/tvTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="INTERACCIÓN\nPOR VOZ"
+            android:textColor="@color/morado_fuerte"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:fontFamily="@font/convergence"
+            android:layout_marginTop="24dp" />
+
+        <!-- Imagen del bot -->
+        <ImageView
+            android:id="@+id/ivBot"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:src="@drawable/robot_1"
+            android:layout_marginTop="16dp" />
+
+        <!-- Bienvenida -->
+        <TextView
+            android:id="@+id/tvBienvenida"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BIENVENIDO"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="16dp" />
+
+        <!-- Pregunta -->
+        <TextView
+            android:id="@+id/tvPregunta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="COMENTAME, ¿QUÉ TAL\nTE HA ESTADO YENDO?"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:gravity="center"
+            android:layout_marginTop="8dp" />
+
+        <!-- Texto aclaratorio -->
+        <TextView
+            android:id="@+id/tvPrivacidad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TODAS LAS CONVERSACIONES SON\nPRIVADAS, PUEDES HABLAR CON\nTOTAL LIBERTAD"
+            android:textSize="20sp"
+            android:textColor="@android:color/black"
+            android:gravity="center"
+            android:layout_marginTop="12dp" />
+
+        <!-- Botón de micrófono -->
+        <ImageButton
+            android:id="@+id/btnMicrofono"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/ic_mic"
+            android:background="@drawable/microfono_circular"
+            android:tint="@android:color/white"
+            android:layout_marginTop="24dp" />
+
+        <TextView
+            android:id="@+id/tvEstadoVoz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Escuchando..."
+            android:textColor="@color/morado_fuerte"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:visibility="gone"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"/>
+
+
+    </LinearLayout>
+</ScrollView>

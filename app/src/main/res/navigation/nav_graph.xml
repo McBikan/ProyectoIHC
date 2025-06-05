@@ -34,10 +34,36 @@
         <action
             android:id="@+id/action_menuFragment_to_perfilFragment"
             app:destination="@id/perfilFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_frasesFragment"
+            app:destination="@id/frasesFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_vozFragment"
+            app:destination="@id/vozFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/testFragment"
         android:name="com.practica.proyectoihc.ui.TestFragment"
         android:label="TestFragment"
         tools:layout="@layout/fragment_test"/>
+    <fragment
+        android:id="@+id/frasesFragment"
+        android:name="com.practica.proyectoihc.ui.FrasesFragment"
+        android:label="FrasesFragment"
+    tools:layout="@layout/fragment_frases"/>
+    <fragment
+        android:id="@+id/vozFragment"
+        android:name="com.practica.proyectoihc.ui.VozFragment"
+        android:label="VozFragment"
+        tools:layout="@layout/fragment_voz">
+        <action
+            android:id="@+id/action_vozFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.practica.proyectoihc.ui.ChatFragment"
+        android:label="ChatFragment"
+        tools:layout="@layout/fragment_chat"/>
 </navigation>

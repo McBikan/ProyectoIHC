@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo_claro"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:gravity="center_horizontal">
+
+        <!-- Botón de menú hamburguesa -->
+        <ImageView
+            android:id="@+id/ivMenu"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_menu"
+            android:layout_gravity="start" />
+
+        <!-- Título -->
+        <TextView
+            android:id="@+id/tvTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="FRASES MOTIVADORAS"
+            android:textColor="@color/morado_fuerte"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/convergence"
+            android:layout_marginTop="24dp"
+            android:gravity="center"
+            android:textAlignment="center" />
+
+        <!-- Subtítulo -->
+        <TextView
+            android:id="@+id/tvSubtitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ELIGE TU CONTEXTO:"
+            android:gravity="center"
+            android:textColor="@android:color/black"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            android:layout_marginTop="24dp" />
+
+        <!-- Botones de contexto -->
+        <Button
+            android:id="@+id/btnFamilia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Problemas Familiares"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:background="@drawable/boton_borde_morado_oscuro"
+            android:layout_marginTop="12dp"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="8dp" />
+
+        <Button
+            android:id="@+id/btnPareja"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Problemas de Pareja"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:background="@drawable/boton_borde_morado_oscuro"
+            android:layout_marginTop="12dp"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="8dp" />
+
+        <Button
+            android:id="@+id/btnAcademico"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Problemas Académicos"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:background="@drawable/boton_borde_morado_oscuro"
+            android:layout_marginTop="12dp"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="8dp" />
+
+        <Button
+            android:id="@+id/btnAlimenticio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Problemas Alimenticios"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:background="@drawable/boton_borde_morado_oscuro"
+            android:layout_marginTop="12dp"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="8dp" />
+
+        <!-- Botón de micrófono -->
+        <ImageButton
+            android:id="@+id/btnMicrofono"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/ic_mic"
+            android:background="@drawable/microfono_circular"
+            android:tint="@android:color/white"
+            android:layout_marginTop="32dp" />
+    </LinearLayout>
+</ScrollView>

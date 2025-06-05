@@ -19,11 +19,30 @@ class MenuFragment : Fragment() {
 
         // Referencia al botón de Evaluación Psicológica
         val btnEvaluacion: LinearLayout = view.findViewById(R.id.opcionEvaluacion)
+        val btnInicio: LinearLayout = view.findViewById(R.id.opcionInicio)
+        val btnInteraccion: LinearLayout = view.findViewById(R.id.opcionInteraccion)
+        val btnFrases: LinearLayout = view.findViewById(R.id.opcionFrases)
+
 
         btnEvaluacion.setOnClickListener {
             // Aquí navega al TestFragment
             findNavController().navigate(R.id.action_menuFragment_to_testFragment)
         }
+        // Navegar a PerfilFragment
+        btnInicio.setOnClickListener {
+            findNavController().navigate(R.id.action_menuFragment_to_perfilFragment)
+        }
+        // Navegar a PerfilFragment
+        btnInteraccion.setOnClickListener {
+            findNavController().navigate(R.id.action_menuFragment_to_vozFragment)
+        }
+        // Navegar a PerfilFragment
+        btnFrases.setOnClickListener {
+            findNavController().navigate(R.id.action_menuFragment_to_frasesFragment)
+        }
+
+
+
 
         return view
     }
