@@ -17,6 +17,9 @@
         <action
             android:id="@+id/action_loginFragment_to_perfilFragment"
             app:destination="@id/perfilFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_registroFragment"
+            app:destination="@id/registroFragment" />
     </fragment>
     <fragment
         android:id="@+id/perfilFragment"
@@ -90,5 +93,10 @@
         android:id="@+id/resultadoFragment"
         android:name="com.practica.proyectoihc.ui.ResultadoFragment"
         android:label="fragment_resultado"
-        tools:layout="@layout/fragment_resultado" />/>
+        tools:layout="@layout/fragment_resultado" />
+    <fragment
+        android:id="@+id/registroFragment"
+        android:name="com.practica.proyectoihc.ui.RegistroFragment"
+        android:label="fragment_registro"
+        tools:layout="@layout/fragment_registro" />/>
 </navigation>

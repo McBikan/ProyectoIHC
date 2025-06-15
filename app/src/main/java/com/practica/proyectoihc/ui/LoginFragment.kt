@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import com.practica.proyectoihc.databinding.FragmentLoginBinding
 import androidx.navigation.fragment.findNavController
@@ -22,6 +23,12 @@ class LoginFragment : Fragment() {
     ): View {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
         val view = binding.root
+        val btnRegistro: LinearLayout = view.findViewById(R.id.registerSection)
+
+        btnRegistro.setOnClickListener {
+            // Aquí navega al TestFragment
+            findNavController().navigate(R.id.action_loginFragment_to_registroFragment)
+        }
 
         binding.btnLogin.setOnClickListener {
             val email = binding.etEmail.text.toString().trim()
