@@ -22,7 +22,8 @@ class MenuFragment : Fragment() {
         val btnInicio: LinearLayout = view.findViewById(R.id.opcionInicio)
         val btnInteraccion: LinearLayout = view.findViewById(R.id.opcionInteraccion)
         val btnFrases: LinearLayout = view.findViewById(R.id.opcionFrases)
-
+        val btnHistorial: LinearLayout = view.findViewById(R.id.opcionHistorial)
+        val btnEmociones : LinearLayout = view.findViewById(R.id.opcionEmocion)
 
         btnEvaluacion.setOnClickListener {
             // Aquí navega al TestFragment
@@ -32,7 +33,7 @@ class MenuFragment : Fragment() {
         btnInicio.setOnClickListener {
             findNavController().navigate(R.id.action_menuFragment_to_perfilFragment)
         }
-        // Navegar a PerfilFragment
+        // Navegar a VozFragment
         btnInteraccion.setOnClickListener {
             findNavController().navigate(R.id.action_menuFragment_to_vozFragment)
         }
@@ -40,7 +41,14 @@ class MenuFragment : Fragment() {
         btnFrases.setOnClickListener {
             findNavController().navigate(R.id.action_menuFragment_to_frasesFragment)
         }
-
+        // Navegar a HistorialFragment
+        btnHistorial.setOnClickListener {
+            findNavController().navigate(R.id.action_menuFragment_to_HIstorialFragment)
+        }
+        // Navegar a EmocionesFragment
+        btnEmociones.setOnClickListener {
+            findNavController().navigate(R.id.action_menuFragment_to_emocionesFragment)
+        }
 
 
 

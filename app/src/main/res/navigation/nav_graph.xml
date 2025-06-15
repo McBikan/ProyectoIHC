@@ -40,6 +40,12 @@
         <action
             android:id="@+id/action_menuFragment_to_vozFragment"
             app:destination="@id/vozFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_HIstorialFragment"
+            app:destination="@id/HIstorialFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_emocionesFragment"
+            app:destination="@id/emocionesFragment" />
 
     </fragment>
     <fragment
@@ -66,4 +72,23 @@
         android:name="com.practica.proyectoihc.ui.ChatFragment"
         android:label="ChatFragment"
         tools:layout="@layout/fragment_chat"/>
+    <fragment
+        android:id="@+id/HIstorialFragment"
+        android:name="com.practica.proyectoihc.ui.HIstorialFragment"
+        android:label="fragment_historial"
+        tools:layout="@layout/fragment_historial" />
+    <fragment
+        android:id="@+id/emocionesFragment"
+        android:name="com.practica.proyectoihc.ui.EmocionesFragment"
+        android:label="EmocionesFragment"
+        tools:layout="@layout/fragment_emociones" >
+        <action
+            android:id="@+id/action_emocionesFragment_to_resultadoFragment"
+            app:destination="@id/resultadoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultadoFragment"
+        android:name="com.practica.proyectoihc.ui.ResultadoFragment"
+        android:label="fragment_resultado"
+        tools:layout="@layout/fragment_resultado" />/>
 </navigation>

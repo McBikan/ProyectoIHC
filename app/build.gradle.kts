@@ -56,6 +56,8 @@ dependencies {
     implementation("androidx.activity:activity-ktx:1.7.2")
     implementation("androidx.core:core-ktx:1.12.0")
 
+    implementation("com.squareup.okhttp3:okhttp:4.10.0")
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

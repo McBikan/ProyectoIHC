@@ -17,8 +17,10 @@
             android:id="@+id/ivMenu"
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:src="@drawable/ic_menu"
-            android:layout_gravity="start" />
+            android:src="@drawable/menu_burger"
+            android:layout_gravity="start"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp" />
 
         <!-- Título -->
         <TextView
@@ -27,7 +29,7 @@
             android:layout_height="wrap_content"
             android:text="FRASES MOTIVADORAS"
             android:textColor="@color/morado_fuerte"
-            android:textSize="40sp"
+            android:textSize="50sp"
             android:textStyle="bold"
             android:fontFamily="@font/convergence"
             android:layout_marginTop="24dp"
@@ -104,9 +106,7 @@
             android:id="@+id/btnMicrofono"
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:src="@drawable/ic_mic"
             android:background="@drawable/microfono_circular"
-            android:tint="@android:color/white"
             android:layout_marginTop="32dp" />
     </LinearLayout>
 </ScrollView>
