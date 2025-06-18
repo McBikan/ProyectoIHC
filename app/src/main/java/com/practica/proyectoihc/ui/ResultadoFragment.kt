@@ -52,7 +52,9 @@ class ResultadoFragment : Fragment() {
             "happiness" to "😄",
             "sadness" to "😢",
             "anger" to "😠",
-            "fear" to "😨"
+            "fear" to "😨",
+            "bored" to "🥱",
+            "excited" to "🤩"
         )
 
         val resultadoBuilder = StringBuilder("🎭 Resultados por modelo:\n\n")

@@ -50,8 +50,6 @@ class MenuFragment : Fragment() {
             findNavController().navigate(R.id.action_menuFragment_to_emocionesFragment)
         }
 
-
-
         return view
     }
 }

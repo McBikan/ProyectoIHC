@@ -172,7 +172,8 @@ class EmocionesFragment : BaseMenuFragment() {
 
         val endpoints = mapOf(
             "ingles" to "https://McBikan-DeteccionEmociones.hf.space/predict",
-            "espanol" to "https://McBikan-DeteccionEmociones.hf.space/predict_es"
+            "espanol" to "https://McBikan-DeteccionEmociones.hf.space/predict_es",
+            "nuevo_modelo" to "https://McBikan-DeteccionEmociones.hf.space/predict_v3" //
         )
 
         val resultados = mutableMapOf<String, JSONObject>()

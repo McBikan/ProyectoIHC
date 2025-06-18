@@ -55,7 +55,11 @@
         android:id="@+id/testFragment"
         android:name="com.practica.proyectoihc.ui.TestFragment"
         android:label="TestFragment"
-        tools:layout="@layout/fragment_test"/>
+        tools:layout="@layout/fragment_test">
+        <action
+            android:id="@+id/action_testFragment_to_psicoFragment"
+            app:destination="@id/psicoFragment" />
+    </fragment>
     <fragment
         android:id="@+id/frasesFragment"
         android:name="com.practica.proyectoihc.ui.FrasesFragment"
@@ -98,5 +102,10 @@
         android:id="@+id/registroFragment"
         android:name="com.practica.proyectoihc.ui.RegistroFragment"
         android:label="fragment_registro"
-        tools:layout="@layout/fragment_registro" />/>
+        tools:layout="@layout/fragment_registro" />
+    <fragment
+        android:id="@+id/psicoFragment"
+        android:name="com.practica.proyectoihc.ui.PsicoFragment"
+        android:label="fragment_psico"
+        tools:layout="@layout/fragment_psico" />
 </navigation>
