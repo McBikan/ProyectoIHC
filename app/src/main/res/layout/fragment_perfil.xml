@@ -116,39 +116,6 @@
                 android:layout_marginStart="8dp" />
         </LinearLayout>
 
-        <!-- BLOQUE EDAD -->
-        <LinearLayout
-            android:id="@+id/layoutEdad"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="@drawable/borde_rectangular_blanco"
-            android:padding="12dp"
-            android:gravity="center"
-            android:layout_gravity="center"
-            app:layout_constraintTop_toBottomOf="@id/layoutApellido"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="12dp">
-
-            <TextView
-                android:id="@+id/tvLabelEdad"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="EDAD:"
-                android:textColor="@android:color/white"
-                android:textStyle="bold"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/tvEdadValor"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="57 AÑOS"
-                android:textColor="@android:color/white"
-                android:layout_marginStart="8dp" />
-        </LinearLayout>
-
         <!-- BLOQUE ANTECEDENTES -->
         <LinearLayout
             android:id="@+id/layoutAntecedentes"
@@ -159,7 +126,7 @@
             android:padding="12dp"
             android:gravity="center"
             android:layout_gravity="center"
-            app:layout_constraintTop_toBottomOf="@id/layoutEdad"
+            app:layout_constraintTop_toBottomOf="@id/layoutApellido"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="12dp"

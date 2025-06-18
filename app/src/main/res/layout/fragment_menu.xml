@@ -19,6 +19,15 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <ImageView
+                android:id="@+id/btnReturn"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/ic_return"
+                android:layout_gravity="top|end"
+                app:tint="@color/primary_blue" />
+
             <!-- Título -->
             <TextView
                 android:id="@+id/tvTituloMenu"
@@ -29,7 +38,6 @@
                 android:textColor="@color/morado_fuerte"
                 android:textStyle="bold"
                 android:textSize="35sp"
-                android:layout_marginTop="16dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="32dp" />
 

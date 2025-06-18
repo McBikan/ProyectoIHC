@@ -25,7 +25,11 @@
         android:id="@+id/perfilFragment"
         android:name="com.practica.proyectoihc.ui.PerfilFragment"
         android:label="PerfilFragment"
-        tools:layout="@layout/fragment_perfil" />
+        tools:layout="@layout/fragment_perfil" >
+        <action
+            android:id="@+id/action_perfilFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
     <fragment
         android:id="@+id/menuFragment"
         android:name="com.practica.proyectoihc.ui.MenuFragment"
