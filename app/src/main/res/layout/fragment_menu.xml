@@ -192,31 +192,6 @@
                     android:layout_marginStart="12dp" />
             </LinearLayout>
 
-            <!-- DETECCIÓN DE CRISIS EMOCIONALES -->
-            <LinearLayout
-                android:id="@+id/opcionCrisis"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:padding="12dp"
-                android:clickable="true"
-                android:foreground="?attr/selectableItemBackground">
-
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_warning" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Detección de Crisis Emocionales"
-                    android:textSize="14sp"
-                    android:textColor="@android:color/black"
-                    android:layout_marginStart="12dp" />
-            </LinearLayout>
-
         </LinearLayout>
     </ScrollView>
 

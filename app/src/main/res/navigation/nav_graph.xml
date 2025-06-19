@@ -6,7 +6,6 @@
     app:startDestination="@id/loginFragment">
     <action
         android:id="@+id/action_global_menuFragment"
-        app:destination="@id/menuFragment"
         app:launchSingleTop="true" />
 
     <fragment
@@ -27,8 +26,8 @@
         android:label="PerfilFragment"
         tools:layout="@layout/fragment_perfil" >
         <action
-            android:id="@+id/action_perfilFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            android:id="@+id/action_perfilFragment_to_menuFragment"
+            app:destination="@id/menuFragment" />
     </fragment>
     <fragment
         android:id="@+id/menuFragment"
@@ -53,6 +52,9 @@
         <action
             android:id="@+id/action_menuFragment_to_emocionesFragment"
             app:destination="@id/emocionesFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
 
     </fragment>
     <fragment
@@ -63,12 +65,19 @@
         <action
             android:id="@+id/action_testFragment_to_psicoFragment"
             app:destination="@id/psicoFragment" />
+        <action
+            android:id="@+id/action_testFragment_to_menuFragment"
+            app:destination="@id/menuFragment" />
     </fragment>
     <fragment
         android:id="@+id/frasesFragment"
         android:name="com.practica.proyectoihc.ui.FrasesFragment"
         android:label="FrasesFragment"
-    tools:layout="@layout/fragment_frases"/>
+    tools:layout="@layout/fragment_frases">
+        <action
+            android:id="@+id/action_frasesFragment_to_menuFragment"
+            app:destination="@id/menuFragment" />
+    </fragment>
     <fragment
         android:id="@+id/vozFragment"
         android:name="com.practica.proyectoihc.ui.VozFragment"
@@ -77,6 +86,9 @@
         <action
             android:id="@+id/action_vozFragment_to_chatFragment"
             app:destination="@id/chatFragment" />
+        <action
+            android:id="@+id/action_vozFragment_to_menuFragment"
+            app:destination="@id/menuFragment" />
     </fragment>
     <fragment
         android:id="@+id/chatFragment"
@@ -87,7 +99,11 @@
         android:id="@+id/HIstorialFragment"
         android:name="com.practica.proyectoihc.ui.HIstorialFragment"
         android:label="fragment_historial"
-        tools:layout="@layout/fragment_historial" />
+        tools:layout="@layout/fragment_historial" >
+        <action
+            android:id="@+id/action_HIstorialFragment_to_menuFragment"
+            app:destination="@id/menuFragment" />
+    </fragment>
     <fragment
         android:id="@+id/emocionesFragment"
         android:name="com.practica.proyectoihc.ui.EmocionesFragment"
@@ -96,6 +112,9 @@
         <action
             android:id="@+id/action_emocionesFragment_to_resultadoFragment"
             app:destination="@id/resultadoFragment" />
+        <action
+            android:id="@+id/action_emocionesFragment_to_menuFragment"
+            app:destination="@id/menuFragment" />
     </fragment>
     <fragment
         android:id="@+id/resultadoFragment"
@@ -106,10 +125,18 @@
         android:id="@+id/registroFragment"
         android:name="com.practica.proyectoihc.ui.RegistroFragment"
         android:label="fragment_registro"
-        tools:layout="@layout/fragment_registro" />
+        tools:layout="@layout/fragment_registro" >
+        <action
+            android:id="@+id/action_registroFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
     <fragment
         android:id="@+id/psicoFragment"
         android:name="com.practica.proyectoihc.ui.PsicoFragment"
         android:label="fragment_psico"
-        tools:layout="@layout/fragment_psico" />
+        tools:layout="@layout/fragment_psico" >
+        <action
+            android:id="@+id/action_psicoFragment_to_testFragment"
+            app:destination="@id/testFragment" />
+    </fragment>
 </navigation>

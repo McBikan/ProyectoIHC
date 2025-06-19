@@ -5,56 +5,79 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
+import android.widget.ScrollView
+import android.widget.TextView
+import androidx.appcompat.widget.AppCompatButton
+import androidx.navigation.fragment.findNavController
 import com.practica.proyectoihc.R
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [PsicoFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class PsicoFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_psico, container, false)
-    }
+        val view = ScrollView(requireContext()).apply {
+            layoutParams = ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT
+            )
+            setBackgroundColor(resources.getColor(R.color.fondo_claro))
+            setPadding(24, 24, 24, 24)
+        }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment PsicoFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            PsicoFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+        val mainLayout = LinearLayout(requireContext()).apply {
+            orientation = LinearLayout.VERTICAL
+            layoutParams = ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+        }
+
+        val titulo = TextView(requireContext()).apply {
+            text = "RESULTADOS DE TU EVALUACIÓN"
+            textSize = 24f
+            setTextColor(resources.getColor(R.color.morado_fuerte))
+            gravity = android.view.Gravity.CENTER
+            setPadding(0, 0, 0, 32)
+            setTypeface(typeface, android.graphics.Typeface.BOLD)
+        }
+
+        val resultado = arguments?.getString("resultado") ?: "No se pudo obtener el resultado del análisis."
+
+        val tvResultado = TextView(requireContext()).apply {
+            text = resultado
+            textSize = 16f
+            setTextColor(resources.getColor(android.R.color.black))
+            setPadding(16, 16, 16, 32)
+            setLineSpacing(8f, 1.0f)
+        }
+
+        val btnVolver = AppCompatButton(requireContext()).apply {
+            text = "Volver al Test"
+            setBackgroundResource(R.drawable.boton_con_borde)
+            setTextColor(resources.getColor(android.R.color.white))
+            textSize = 18f
+            setPadding(32, 16, 32, 16)
+            layoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            ).apply {
+                gravity = android.view.Gravity.CENTER_HORIZONTAL
+                topMargin = 16
             }
+            setOnClickListener {
+                findNavController().navigate(R.id.action_psicoFragment_to_testFragment)
+            }
+        }
+
+        mainLayout.addView(titulo)
+        mainLayout.addView(tvResultado)
+        mainLayout.addView(btnVolver)
+
+        view.addView(mainLayout)
+
+        return view
     }
 }

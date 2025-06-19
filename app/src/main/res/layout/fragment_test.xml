@@ -5,7 +5,6 @@
     android:background="@color/fondo_claro"
     android:fillViewport="true">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -61,15 +60,12 @@
             android:id="@+id/tvInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="100 PREGUNTAS\nDURACIÓN: 30MIN"
+            android:text="15 PREGUNTAS\nDURACIÓN: 20MIN"
             android:textColor="@android:color/black"
             android:textSize="30sp"
             android:gravity="center"
             android:layout_marginTop="8dp" />
 
-        <!-- Botón Empezar -->
-
-        <!-- Botón flotante de micrófono -->
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnEmpezar"
             android:layout_width="wrap_content"
@@ -82,13 +78,6 @@
             android:textAllCaps="false"
             android:textColor="@android:color/white"
             android:textSize="30sp" />
-
-        <ImageButton
-            android:id="@+id/btnMicrofono"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:background="@drawable/microfono_circular"
-            android:layout_marginTop="24dp" />
 
     </LinearLayout>
 
