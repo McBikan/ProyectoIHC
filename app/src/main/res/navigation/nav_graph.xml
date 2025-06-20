@@ -77,6 +77,9 @@
         <action
             android:id="@+id/action_frasesFragment_to_menuFragment"
             app:destination="@id/menuFragment" />
+        <action
+            android:id="@+id/action_frasesFragment_to_fraseResultadoFragment"
+            app:destination="@id/fraseResultadoFragment" />
     </fragment>
     <fragment
         android:id="@+id/vozFragment"
@@ -147,5 +150,14 @@
         <action
             android:id="@+id/action_preguntasTestFragment_to_psicoFragment"
             app:destination="@id/psicoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fraseResultadoFragment"
+        android:name="com.practica.proyectoihc.ui.FraseResultadoFragment"
+        android:label="fragment_frase_resultado"
+        tools:layout="@layout/fragment_frase_resultado">
+        <argument
+            android:name="fraseContexto"
+            app:argType="string" />
     </fragment>
 </navigation>
