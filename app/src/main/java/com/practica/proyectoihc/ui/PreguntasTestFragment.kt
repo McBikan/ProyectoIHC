@@ -1,0 +1,1 @@
+package com.practica.proyectoihc.uiimport androidx.fragment.app.Fragmentclass PreguntasTestFragment: Fragment() {}
