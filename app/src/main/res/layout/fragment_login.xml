@@ -15,7 +15,6 @@
         android:layout_marginTop="40dp"
         tools:context=".ui.LoginFragment">
 
-        <!-- Sección LOGIN -->
         <LinearLayout
             android:id="@+id/loginSection"
             android:layout_width="wrap_content"
@@ -44,7 +43,6 @@
                 android:layout_marginTop="4dp" />
         </LinearLayout>
 
-        <!-- Email -->
         <TextView
             android:id="@+id/tvEmailLabel"
             android:layout_width="wrap_content"
@@ -75,7 +73,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="8dp" />
 
-        <!-- Contraseña -->
         <TextView
             android:id="@+id/tvPasswordLabel"
             android:layout_width="wrap_content"
@@ -106,7 +103,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="8dp" />
 
-        <!-- Botón ENTRAR -->
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnLogin"
             android:layout_width="0dp"
@@ -121,7 +117,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="24dp" />
 
-        <!-- Olvidaste tu contraseña -->
         <TextView
             android:id="@+id/tvForgotPassword"
             android:layout_width="wrap_content"
@@ -133,7 +128,6 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="12dp" />
 
-        <!-- REGISTER -->
         <LinearLayout
             android:id="@+id/registerSection"
             android:layout_width="wrap_content"

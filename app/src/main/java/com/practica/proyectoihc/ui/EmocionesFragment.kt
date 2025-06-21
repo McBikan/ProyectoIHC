@@ -1,6 +1,5 @@
 package com.practica.proyectoihc.ui
 
-import com.practica.proyectoihc.ui.base.BaseMenuFragment
 import android.Manifest
 import android.content.pm.PackageManager
 import android.media.AudioFormat
@@ -12,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -27,7 +27,7 @@ import androidx.navigation.fragment.findNavController
 import org.json.JSONObject
 
 
-class EmocionesFragment : BaseMenuFragment() {
+class EmocionesFragment : Fragment() {
 
     private val sampleRate = 16000
     private val audioEncoding = AudioFormat.ENCODING_PCM_16BIT
@@ -46,7 +46,7 @@ class EmocionesFragment : BaseMenuFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val ivMenu = view.findViewById<View>(R.id.ivMenu)
+        val ivMenu = view.findViewById<ImageView>(R.id.ivMenu)
         setupMenuNavigation(ivMenu)
 
         val btnMicrofono = view.findViewById<ImageButton>(R.id.btnMicrofono)
@@ -54,6 +54,17 @@ class EmocionesFragment : BaseMenuFragment() {
         btnMicrofono.setOnClickListener {
             verificarPermisoYGrabar()
         }
+    }
+
+    // Método que faltaba - navega de vuelta al MenuFragment
+    private fun setupMenuNavigation(menuIcon: ImageView) {
+        menuIcon.setOnClickListener {
+            navigateToMenu()
+        }
+    }
+
+    private fun navigateToMenu() {
+        findNavController().navigate(R.id.action_emocionesFragment_to_menuFragment)
     }
 
     private fun verificarPermisoYGrabar() {
@@ -102,7 +113,7 @@ class EmocionesFragment : BaseMenuFragment() {
         try {
             audioRecord.startRecording()
         } catch (e: SecurityException) {
-            Log.e("Permisos", "❌ No se puede grabar: ${e.message}")
+            Log.e("Permisos", "No se puede grabar: ${e.message}")
             Toast.makeText(requireContext(), "Permiso de micrófono denegado", Toast.LENGTH_SHORT).show()
             return
         }
@@ -120,7 +131,6 @@ class EmocionesFragment : BaseMenuFragment() {
             audioRecord.stop()
             audioRecord.release()
 
-            // Escribir archivo .wav
             audioFile = File(requireContext().cacheDir, "audio.wav")
             writeWavFile(audioFile, pcmStream.toByteArray())
             enviarAudioAHuggingFace(audioFile)
@@ -173,7 +183,7 @@ class EmocionesFragment : BaseMenuFragment() {
         val endpoints = mapOf(
             "ingles" to "https://McBikan-DeteccionEmociones.hf.space/predict",
             "espanol" to "https://McBikan-DeteccionEmociones.hf.space/predict_es",
-            "nuevo_modelo" to "https://McBikan-DeteccionEmociones.hf.space/predict_v3" //
+            "nuevo_modelo" to "https://McBikan-DeteccionEmociones.hf.space/predict_v3"
         )
 
         val resultados = mutableMapOf<String, JSONObject>()
@@ -188,12 +198,12 @@ class EmocionesFragment : BaseMenuFragment() {
 
             client.newCall(request).enqueue(object : Callback {
                 override fun onFailure(call: Call, e: IOException) {
-                    Log.e("HF_API", "❌ Error en $idioma: ${e.message}")
+                    Log.e("HF_API", "Error en $idioma: ${e.message}")
                 }
 
                 override fun onResponse(call: Call, response: Response) {
                     val responseText = response.body?.string()
-                    Log.i("HF_API", "✅ [$idioma] Respuesta: $responseText")
+                    Log.i("HF_API", " [$idioma] Respuesta: $responseText")
 
                     try {
                         val json = JSONObject(responseText ?: "")
@@ -219,7 +229,7 @@ class EmocionesFragment : BaseMenuFragment() {
                         }
 
                     } catch (e: Exception) {
-                        Log.e("HF_API", "❌ Error procesando JSON de $idioma: ${e.message}")
+                        Log.e("HF_API", "Error procesando JSON de $idioma: ${e.message}")
                     }
                 }
             })
@@ -227,6 +237,4 @@ class EmocionesFragment : BaseMenuFragment() {
     }
 
     fun Double.format(digits: Int) = "%.${digits}f".format(this)
-
-
 }

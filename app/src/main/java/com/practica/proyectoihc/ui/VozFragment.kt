@@ -18,8 +18,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.practica.proyectoihc.R
-import com.practica.proyectoihc.ui.base.BaseMenuFragment
 import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
@@ -27,7 +28,7 @@ import org.json.JSONObject
 import java.io.IOException
 import java.util.*
 
-class VozFragment : BaseMenuFragment() {
+class VozFragment : Fragment() {
 
     private lateinit var speechRecognizer: SpeechRecognizer
     private lateinit var speechIntent: Intent
@@ -60,7 +61,7 @@ class VozFragment : BaseMenuFragment() {
 
         inicializarReconocimientoDeVoz()
 
-        btnMic.setOnTouchListener { _, event ->
+        btnMic.setOnTouchListener { view, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
                     if (ContextCompat.checkSelfPermission(
@@ -83,6 +84,7 @@ class VozFragment : BaseMenuFragment() {
                             Toast.LENGTH_SHORT
                         ).show()
                     }
+                    view.performClick()
                     true
                 }
 
@@ -192,21 +194,24 @@ class VozFragment : BaseMenuFragment() {
             }
 
             override fun onResponse(call: Call, response: Response) {
-                val body = response.body?.string()
-                try {
-                    val reply = JSONObject(body)
-                        .getJSONArray("candidates")
-                        .getJSONObject(0)
-                        .getJSONObject("content")
-                        .getJSONArray("parts")
-                        .getJSONObject(0)
-                        .getString("text")
+                response.body?.string()?.let { body ->
+                    try {
+                        val reply = JSONObject(body)
+                            .getJSONArray("candidates")
+                            .getJSONObject(0)
+                            .getJSONObject("content")
+                            .getJSONArray("parts")
+                            .getJSONObject(0)
+                            .getString("text")
 
-                    activity?.runOnUiThread {
-                        convertirTextoAVoz(reply)
+                        activity?.runOnUiThread {
+                            convertirTextoAVoz(reply)
+                        }
+                    } catch (e: Exception) {
+                        Log.e("GeminiAPI", "Error al procesar respuesta: $body", e)
                     }
-                } catch (e: Exception) {
-                    Log.e("GeminiAPI", "Error al procesar respuesta: $body", e)
+                } ?: run {
+                    Log.e("GeminiAPI", "Respuesta vacía del servidor")
                 }
             }
         })
@@ -220,5 +225,15 @@ class VozFragment : BaseMenuFragment() {
         super.onDestroyView()
         speechRecognizer.destroy()
         tts?.shutdown()
+    }
+
+    private fun setupMenuNavigation(imgIcon: View){
+        imgIcon.setOnClickListener {
+            navigateToMenu()
+        }
+    }
+
+    private fun navigateToMenu(){
+        findNavController().navigate(R.id.action_vozFragment_to_menuFragment)
     }
 }

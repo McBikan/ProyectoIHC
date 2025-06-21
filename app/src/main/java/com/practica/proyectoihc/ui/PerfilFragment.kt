@@ -5,8 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
@@ -17,9 +19,8 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.practica.proyectoihc.R
 import com.practica.proyectoihc.databinding.FragmentPerfilBinding
-import com.practica.proyectoihc.ui.base.BaseMenuFragment
 
-class PerfilFragment : BaseMenuFragment() {
+class PerfilFragment : Fragment() {
 
     private var _binding: FragmentPerfilBinding? = null
     private val binding get() = _binding!!
@@ -44,6 +45,12 @@ class PerfilFragment : BaseMenuFragment() {
         setupMenuNavigation(binding.ivMenu)
         setupListeners()
         loadUserData()
+    }
+
+    private fun setupMenuNavigation(menuIcon: ImageView) {
+        menuIcon.setOnClickListener {
+            navigateToMenu()
+        }
     }
 
     private fun setupListeners() {

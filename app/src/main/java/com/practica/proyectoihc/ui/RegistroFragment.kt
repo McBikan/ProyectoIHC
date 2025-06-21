@@ -3,6 +3,7 @@ package com.practica.proyectoihc.ui
 import android.content.ContentValues
 import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Patterns
@@ -33,7 +34,6 @@ class RegistroFragment : Fragment() {
 
     private var _binding: FragmentRegistroBinding? = null
     private val binding get() = _binding!!
-
     private lateinit var auth: FirebaseAuth
     private lateinit var storage: FirebaseStorage
     private lateinit var db: FirebaseFirestore
@@ -57,7 +57,11 @@ class RegistroFragment : Fragment() {
 
     private val permissionLauncher: ActivityResultLauncher<Array<String>> = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions: Map<String, Boolean> ->
         val cameraGranted = permissions[android.Manifest.permission.CAMERA] ?: false
-        val storageGranted = permissions[android.Manifest.permission.READ_EXTERNAL_STORAGE] ?: false
+        val storageGranted = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            permissions[android.Manifest.permission.READ_MEDIA_IMAGES] ?: false
+        } else {
+            permissions[android.Manifest.permission.READ_EXTERNAL_STORAGE] ?: false
+        }
 
         if (cameraGranted && storageGranted) {
             showImagePickerDialog()
@@ -65,6 +69,7 @@ class RegistroFragment : Fragment() {
             showToast("Permisos necesarios para seleccionar imagen")
         }
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -145,10 +150,21 @@ class RegistroFragment : Fragment() {
             .addOnSuccessListener { authResult ->
                 authResult.user?.let { user ->
                     processImageUpload(user.uid, firstName, lastName)
-                } ?: handleRegistrationError("Error al crear usuario")
+                } ?: run {
+                    hideProgressDialog()
+                    handleRegistrationError("Error al crear usuario")
+                }
             }
             .addOnFailureListener { exception ->
-                handleRegistrationError(exception.message ?: "Error desconocido")
+                hideProgressDialog()
+                val message = when {
+                    exception.message?.contains("email-already-in-use") == true -> "El correo ya está registrado"
+                    exception.message?.contains("weak-password") == true -> "La contraseña es muy débil"
+                    exception.message?.contains("invalid-email") == true -> "Formato de correo inválido"
+                    exception.message?.contains("network-request-failed") == true -> "Error de conexión"
+                    else -> exception.message ?: "Error desconocido"
+                }
+                handleRegistrationError(message)
             }
     }
 
@@ -221,13 +237,23 @@ class RegistroFragment : Fragment() {
     }
 
     private fun hasRequiredPermissions(): Boolean {
-        return ContextCompat.checkSelfPermission(requireContext(), android.Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED &&
-                ContextCompat.checkSelfPermission(requireContext(), android.Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
+        val cameraPermission = ContextCompat.checkSelfPermission(requireContext(), android.Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED
+        val storagePermission = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            ContextCompat.checkSelfPermission(requireContext(), android.Manifest.permission.READ_MEDIA_IMAGES) == PackageManager.PERMISSION_GRANTED
+        } else {
+            ContextCompat.checkSelfPermission(requireContext(), android.Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
+        }
+        return cameraPermission && storagePermission
     }
 
     private fun shouldShowPermissionRationale(): Boolean {
-        return shouldShowRequestPermissionRationale(android.Manifest.permission.CAMERA) ||
-                shouldShowRequestPermissionRationale(android.Manifest.permission.READ_EXTERNAL_STORAGE)
+        val cameraRationale = shouldShowRequestPermissionRationale(android.Manifest.permission.CAMERA)
+        val storageRationale = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            shouldShowRequestPermissionRationale(android.Manifest.permission.READ_MEDIA_IMAGES)
+        } else {
+            shouldShowRequestPermissionRationale(android.Manifest.permission.READ_EXTERNAL_STORAGE)
+        }
+        return cameraRationale || storageRationale
     }
 
     private fun showPermissionRationale() {
@@ -240,10 +266,12 @@ class RegistroFragment : Fragment() {
     }
 
     private fun requestPermissions() {
-        permissionLauncher.launch(arrayOf(
-            android.Manifest.permission.CAMERA,
-            android.Manifest.permission.READ_EXTERNAL_STORAGE
-        ))
+        val permissions = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            arrayOf(android.Manifest.permission.CAMERA, android.Manifest.permission.READ_MEDIA_IMAGES)
+        } else {
+            arrayOf(android.Manifest.permission.CAMERA, android.Manifest.permission.READ_EXTERNAL_STORAGE)
+        }
+        permissionLauncher.launch(permissions)
     }
 
     private fun showImagePickerDialog() {
@@ -316,12 +344,8 @@ class RegistroFragment : Fragment() {
 
     private fun String.getPasswordValidationError(): String? {
         return when {
-            length < 8 -> "Mínimo 8 caracteres"
-            !matches(".*[A-Z].*".toRegex()) -> "Debe contener mayúscula"
-            !matches(".*[a-z].*".toRegex()) -> "Debe contener minúscula"
-            !matches(".*[0-9].*".toRegex()) -> "Debe contener un número"
-            !matches(".*[!@#\$%^&*-].*".toRegex()) -> "Debe contener carácter especial"
-            contains(" ") -> "No debe contener espacios"
+            length < 6 -> "Mínimo 6 caracteres"
+            isEmpty() -> "Contraseña requerida"
             else -> null
         }
     }

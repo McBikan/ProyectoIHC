@@ -4,16 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.practica.proyectoihc.R
-import com.practica.proyectoihc.ui.base.BaseMenuFragment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -23,7 +24,7 @@ import java.io.OutputStreamWriter
 import java.net.HttpURLConnection
 import java.net.URL
 
-class TestFragment : BaseMenuFragment() {
+class TestFragment : Fragment() {
     private lateinit var tvPregunta: TextView
     private lateinit var rgOpciones: RadioGroup
     private lateinit var btnSiguiente: AppCompatButton
@@ -59,7 +60,7 @@ class TestFragment : BaseMenuFragment() {
     }
 
     private fun setupPreguntasUI(view: View) {
-        val layout = view.findViewById<LinearLayout>(R.id.layout_principal) // Falta un layout
+        val layout = view.findViewById<LinearLayout>(R.id.layoutFragmentTest)
 
         tvProgreso = TextView(requireContext()).apply {
             textSize = 16f
@@ -89,7 +90,6 @@ class TestFragment : BaseMenuFragment() {
             setOnClickListener { siguientePregunta() }
         }
 
-        // Agregar las vistas al layout
         layout.apply {
             addView(tvProgreso)
             addView(tvPregunta)
@@ -98,9 +98,7 @@ class TestFragment : BaseMenuFragment() {
         }
     }
 
-    // Alternativa si no conoces el ID exacto del LinearLayout contenedor:
     private fun setupPreguntasUIAlternativo(view: View) {
-        // Encontrar el TextView del título y obtener su parent
         val tvTitulo = view.findViewById<TextView>(R.id.tvTitulo)
         val layout = tvTitulo.parent as LinearLayout
 
@@ -297,7 +295,7 @@ class TestFragment : BaseMenuFragment() {
                     putString("resultado", analisis)
                     putStringArrayList("respuestas", ArrayList(respuestas))
                 }
-                findNavController().navigate(R.id.action_testFragment_to_psicoFragment, bundle)
+                findNavController().navigate(R.id.action_testFragment_to_preguntasTestFragment)
             } catch (e: Exception) {
                 Toast.makeText(context, "Error al analizar respuestas", Toast.LENGTH_SHORT).show()
             }
@@ -363,5 +361,15 @@ class TestFragment : BaseMenuFragment() {
         if (ivMenu != null) {
             setupMenuNavigation(ivMenu)
         }
+    }
+
+    private fun setupMenuNavigation(imgIcon: View){
+        imgIcon.setOnClickListener {
+            navigateToMenu()
+        }
+    }
+
+    private fun navigateToMenu(){
+        findNavController().navigate(R.id.action_testFragment_to_menuFragment)
     }
 }

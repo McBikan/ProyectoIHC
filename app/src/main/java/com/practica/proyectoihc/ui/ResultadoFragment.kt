@@ -23,7 +23,6 @@ class ResultadoFragment : Fragment() {
             return fragment
         }
 
-        // Formato con 2 decimales
         fun Double.format(digits: Int) = "%.${digits}f".format(this)
     }
 
@@ -57,7 +56,7 @@ class ResultadoFragment : Fragment() {
             "excited" to "🤩"
         )
 
-        val resultadoBuilder = StringBuilder("🎭 Resultados por modelo:\n\n")
+        val resultadoBuilder = StringBuilder("Resultados por modelo:\n\n")
 
         try {
             val json = JSONObject(resultadoJson)
@@ -77,7 +76,7 @@ class ResultadoFragment : Fragment() {
 
         } catch (e: Exception) {
             resultadoBuilder.clear()
-            resultadoBuilder.append("❌ Error procesando resultados.")
+            resultadoBuilder.append("Error procesando resultados.")
         }
 
         val tvResultado = view.findViewById<TextView>(R.id.tvResultadoFinal)

@@ -7,7 +7,6 @@
     android:background="@android:color/white"
     android:padding="24dp">
 
-    <!-- Contenido scrollable -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -28,7 +27,6 @@
                 android:layout_gravity="top|end"
                 app:tint="@color/primary_blue" />
 
-            <!-- Título -->
             <TextView
                 android:id="@+id/tvTituloMenu"
                 android:layout_width="wrap_content"
@@ -41,7 +39,6 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="32dp" />
 
-            <!-- INICIO -->
             <LinearLayout
                 android:id="@+id/opcionInicio"
                 android:layout_width="match_parent"
@@ -66,7 +63,6 @@
                     android:layout_marginStart="12dp" />
             </LinearLayout>
 
-            <!-- Evaluación Psicológica -->
             <LinearLayout
                 android:id="@+id/opcionEvaluacion"
                 android:layout_width="match_parent"
@@ -91,7 +87,6 @@
                     android:layout_marginStart="12dp" />
             </LinearLayout>
 
-            <!-- HISTORIAL -->
             <LinearLayout
                 android:id="@+id/opcionHistorial"
                 android:layout_width="match_parent"
@@ -116,7 +111,6 @@
                     android:layout_marginStart="12dp" />
             </LinearLayout>
 
-            <!-- INTERACCIÓN POR VOZ -->
             <LinearLayout
                 android:id="@+id/opcionInteraccion"
                 android:layout_width="match_parent"
@@ -141,7 +135,6 @@
                     android:textSize="14sp" />
             </LinearLayout>
 
-            <!-- FRASES MOTIVADORAS -->
             <LinearLayout
                 android:id="@+id/opcionFrases"
                 android:layout_width="match_parent"
@@ -166,7 +159,6 @@
                     android:layout_marginStart="12dp" />
             </LinearLayout>
 
-            <!-- FRASES MOTIVADORAS -->
             <LinearLayout
                 android:id="@+id/opcionEmocion"
                 android:layout_width="match_parent"
@@ -195,7 +187,6 @@
         </LinearLayout>
     </ScrollView>
 
-    <!-- Botón Salir pegado al fondo -->
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnSalir"
         android:layout_width="match_parent"

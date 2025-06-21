@@ -11,6 +11,7 @@ import com.practica.proyectoihc.databinding.FragmentLoginBinding
 import androidx.navigation.fragment.findNavController
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -41,6 +42,11 @@ class LoginFragment : Fragment() {
     }
 
     private fun initializeFirebase() {
+        try {
+            FirebaseApp.initializeApp(requireContext())
+        } catch (e: IllegalStateException) {
+            // Ya está inicializado, no hacer nada
+        }
         auth = Firebase.auth
     }
 
@@ -107,8 +113,11 @@ class LoginFragment : Fragment() {
             }
     }
 
+
     private fun handleLoginError(errorMessage: String?) {
         val message = when {
+            errorMessage?.contains("INVALID_LOGIN_CREDENTIALS") == true -> "Credenciales inválidas"
+            errorMessage?.contains("invalid-credential") == true -> "Credenciales inválidas"
             errorMessage?.contains("user-not-found") == true -> "Usuario no encontrado"
             errorMessage?.contains("wrong-password") == true -> "Contraseña incorrecta"
             errorMessage?.contains("invalid-email") == true -> "Correo electrónico inválido"

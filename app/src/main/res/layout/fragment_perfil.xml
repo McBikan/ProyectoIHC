@@ -11,7 +11,6 @@
         android:layout_height="wrap_content"
         android:padding="16dp">
 
-        <!-- Menú hamburguesa -->
         <ImageView
             android:id="@+id/ivMenu"
             android:layout_width="32dp"
@@ -23,7 +22,6 @@
             android:layout_marginTop="16dp"
             android:layout_marginStart="16dp" />
 
-        <!-- Imagen de perfil (circular) -->
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/ivProfileImage"
             android:layout_width="160dp"
@@ -36,7 +34,6 @@
             app:civ_border_width="2dp"
             app:civ_border_color="@android:color/white" />
 
-        <!-- Nombre visible (título principal) -->
         <TextView
             android:id="@+id/tvTituloNombre"
             android:layout_width="wrap_content"
@@ -50,7 +47,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="12dp" />
 
-        <!-- BLOQUE NOMBRE -->
         <LinearLayout
             android:id="@+id/layoutNombre"
             android:layout_width="0dp"
@@ -83,7 +79,6 @@
                 android:layout_marginStart="8dp" />
         </LinearLayout>
 
-        <!-- BLOQUE APELLIDO -->
         <LinearLayout
             android:id="@+id/layoutApellido"
             android:layout_width="0dp"
@@ -116,7 +111,6 @@
                 android:layout_marginStart="8dp" />
         </LinearLayout>
 
-        <!-- BLOQUE ANTECEDENTES -->
         <LinearLayout
             android:id="@+id/layoutAntecedentes"
             android:layout_width="0dp"

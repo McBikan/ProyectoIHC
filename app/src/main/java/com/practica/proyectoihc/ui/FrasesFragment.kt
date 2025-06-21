@@ -3,11 +3,11 @@ package com.practica.proyectoihc.ui
 import android.os.Bundle
 import android.view.*
 import android.widget.*
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.practica.proyectoihc.R
-import com.practica.proyectoihc.ui.base.BaseMenuFragment
 
-class FrasesFragment : BaseMenuFragment() {
+class FrasesFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -17,24 +17,20 @@ class FrasesFragment : BaseMenuFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Menú hamburguesa
-        val ivMenu = view.findViewById<View>(R.id.ivMenu)
+        val ivMenu= view.findViewById<ImageView>(R.id.ivMenu)
         setupMenuNavigation(ivMenu)
 
-        // Elementos de layout
         val otrosContainer = view.findViewById<LinearLayout>(R.id.otrosContainer)
         val etOtro = view.findViewById<EditText>(R.id.etOtroProblema)
         val btnEnviarOtro = view.findViewById<ImageButton>(R.id.btnEnviarOtro)
         val btnOtros = view.findViewById<Button>(R.id.btnOtros)
         val btnMicro = view.findViewById<ImageButton>(R.id.btnMicrofono)
 
-        // Mostrar el cuadro de texto cuando se presiona "Otros"
         btnOtros.setOnClickListener {
             otrosContainer.visibility = View.VISIBLE
             etOtro.requestFocus()
         }
 
-        // Botones predefinidos con sus textos
         val contextos = mapOf(
             R.id.btnFamilia to "Problemas Familiares",
             R.id.btnPareja to "Problemas de Pareja",
@@ -48,7 +44,6 @@ class FrasesFragment : BaseMenuFragment() {
             }
         }
 
-        // Enviar el texto personalizado con el botón de avioncito (btnEnviarOtro)
         btnEnviarOtro.setOnClickListener {
             val texto = etOtro.text.toString().trim()
             if (texto.isNotEmpty()) {
@@ -58,10 +53,19 @@ class FrasesFragment : BaseMenuFragment() {
             }
         }
 
-        // Botón de micrófono (reservado para funcionalidad futura)
         btnMicro.setOnClickListener {
             Toast.makeText(requireContext(), "Funcionalidad de audio próximamente", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    private fun setupMenuNavigation(menuIcon: ImageView){
+        menuIcon.setOnClickListener {
+            navigateToMenu()
+        }
+    }
+
+    private fun navigateToMenu(){
+        findNavController().navigate(R.id.action_frasesFragment_to_menuFragment)
     }
 
     private fun navegarConContexto(contexto: String) {

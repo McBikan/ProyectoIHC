@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/fondo_claro"
+    android:id="@+id/layoutFragmentTest"
     android:fillViewport="true">
 
     <LinearLayout
@@ -12,7 +13,6 @@
         android:padding="16dp"
         android:gravity="center_horizontal">
 
-        <!-- Botón de menú hamburguesa -->
         <ImageView
             android:id="@+id/ivMenu"
             android:layout_width="32dp"
@@ -21,7 +21,7 @@
             android:layout_gravity="start"
             android:layout_marginTop="16dp"
             android:layout_marginStart="16dp" />
-        <!-- Título -->
+
         <TextView
             android:id="@+id/tvTitulo"
             android:layout_width="wrap_content"
@@ -35,7 +35,6 @@
             android:fontFamily="@font/convergence"
             android:layout_marginTop="16dp" />
 
-        <!-- Imagen de icono de la evaluación -->
         <ImageView
             android:id="@+id/ivIcono"
             android:layout_width="120dp"
@@ -43,7 +42,6 @@
             android:src="@drawable/icon_test"
             android:layout_marginTop="16dp" />
 
-        <!-- Subtítulo motivacional -->
         <TextView
             android:id="@+id/tvSubtitulo"
             android:layout_width="wrap_content"
@@ -55,7 +53,6 @@
             android:gravity="center"
             android:layout_marginTop="8dp" />
 
-        <!-- Información breve -->
         <TextView
             android:id="@+id/tvInfo"
             android:layout_width="wrap_content"
